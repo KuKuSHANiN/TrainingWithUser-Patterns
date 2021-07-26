@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Main {
-    public static void main(String[] args) {
-        ApplicationSingleton.getStartInstance().runTask1();
+    public static void main(String[] args){
+        Application.start();
         //задачи
         //1. создать source2 из консосоли
         //2. смешать оба source от руки и из консоли

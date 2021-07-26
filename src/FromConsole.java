@@ -4,6 +4,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class FromConsole implements Source {
+
+    private FromConsole(){};  // создаем приватный конструктор, чтобы никто не смог его более вызывать
+
+    private static FromConsole instance; // приватная статическая переменная класса, для хранения его экземпляра в будущем.
+
+    public static FromConsole getInstance(){        // способ для создания единственного экземпляра класса и хранится будет в instance
+        if (instance==null){
+            instance=new FromConsole();
+        }
+        return instance;
+    }
     Scanner in = new Scanner(System.in);
 
     @Override

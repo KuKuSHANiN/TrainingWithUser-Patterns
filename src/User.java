@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // Создали модель со СТАНДАРТНЫМИ геттерами и сеттерами и все блять больше ее не трогаем!!!!
 
-public final class User implements Cloneable{
+public class User {
     private List<String> phoneList = new ArrayList<>();
     private String name;
     private LocalDate birthDate;
@@ -41,11 +41,6 @@ public final class User implements Cloneable{
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
-    }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
     }
 
     @Override

@@ -1,48 +1,47 @@
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class FromConsole implements Source {
 
-    private FromConsole(){};  // создаем приватный конструктор, чтобы никто не смог его более вызывать
+    private FromConsole() {
+    }
+
+    ;  // создаем приватный конструктор, чтобы никто не смог его более вызывать
 
     private static FromConsole instance; // приватная статическая переменная класса, для хранения его экземпляра в будущем.
 
-    public static FromConsole getInstance(){        // способ для создания единственного экземпляра класса и хранится будет в instance
-        if (instance==null){
-            instance=new FromConsole();
+    public static FromConsole getInstance() {        // способ для создания единственного экземпляра класса и хранится будет в instance
+        if (instance == null) {
+            instance = new FromConsole();
         }
         return instance;
     }
+
     Scanner in = new Scanner(System.in);
 
     @Override
     public List<User> createUsers() {
 
-        User user1 = new User();
-        System.out.println("Name");
-        user1.setName(in.next());
-        System.out.println("BirthDate");
-        user1.setBirthDate(LocalDate.of(in.nextInt(), in.nextInt(), in.nextInt()));
-        List<String> phones = new ArrayList<>();
-        System.out.println("Phone");
-        phones.add(in.next());
-        user1.setPhoneList(phones);
+        User user1 = User.builder()
+                .setName(in.next())
+                .setBirthDate(LocalDate.of(in.nextInt(), Month.valueOf(in.next()), in.nextInt()))
+                .setPhoneList(Arrays.asList(in.next(), in.next()))
+                .build();
 
-        User user2 = new User();
-        System.out.println("Name 2");
-        user2.setName(in.next());
-        System.out.println("BirthDate 2");
-        user2.setBirthDate(LocalDate.of(in.nextInt(), in.nextInt(), in.nextInt()));
-        phones = new ArrayList<>();
-        System.out.println("Phone 2");
-        phones.add(in.next());
-        user2.setPhoneList(phones);
+        User user2 = User.builder()
+                .setName(in.next())
+                .setBirthDate(LocalDate.of(in.nextInt(), Month.valueOf(in.next()), in.nextInt()))
+                .setPhoneList(Arrays.asList(in.next(), in.next()))
+                .build();
 
         List<User> userList = new ArrayList<>();
         userList.add(user1);
         userList.add(user2);
+
 
         return userList;
     }

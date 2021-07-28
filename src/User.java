@@ -3,6 +3,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -10,38 +11,28 @@ import java.util.stream.Stream;
 // Создали модель со СТАНДАРТНЫМИ геттерами и сеттерами и все блять больше ее не трогаем!!!!
 
 public class User {
-    private List<String> phoneList = new ArrayList<>();
-    private String name;
-    private LocalDate birthDate;
 
-    public boolean isBetray() {
-        return phoneList.size() > 1;
+    private static List<String> phoneList;
+    private static String name;
+    private static LocalDate birthDate;
+
+    private User() {
     }
 
+    ;
 
-    public List<String> getPhoneList() {
+    public static List<String> getPhoneList() {
         return phoneList;
-    }
-
-    public void setPhoneList(List<String> phoneList) {
-        this.phoneList = phoneList;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public LocalDate getBirthDate() {
+    public static LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
 
     @Override
     public String toString() {
@@ -50,4 +41,36 @@ public class User {
                 ", name='" + name + '\'' +
                 ", birthDate=" + birthDate + '}';
     }
+
+    public static Builder builder() {
+        return new User().new Builder();
+    }
+
+    public class Builder {
+
+        public Builder() {
+        }
+
+        public Builder setName(String name) {
+            User.name = name;
+            return this;
+
+        }
+
+        public Builder setPhoneList(List<String > phoneList) {
+            User.phoneList = phoneList;
+            return this;
+        }
+
+        public Builder setBirthDate(LocalDate birthDate) {
+            User.birthDate = birthDate;
+            return this;
+
+        }
+
+        public User build() {
+            return User.this;
+        }
+    }
+
 }

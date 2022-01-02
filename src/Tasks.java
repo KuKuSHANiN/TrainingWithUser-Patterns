@@ -20,8 +20,8 @@ public class Tasks {
     public static void task2() {
 
         Map<String, User> resultUserListToMap = userList.stream()
-                .collect(Collectors.toMap(User::getName, Function.identity()));
-        System.out.println(resultUserListToMap.get("Misha"));
+                .collect(Collectors.toMap(User::getName, ???????));
+        System.out.println(resultUserListToMap.containsKey("Misha"));
     }
 
     public static void task3() {
